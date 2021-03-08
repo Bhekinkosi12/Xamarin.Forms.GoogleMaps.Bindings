@@ -5,10 +5,13 @@ namespace Xamarin.Forms.GoogleMaps.Bindings
     public class BehaviorBase<T> : Behavior<T> where T : BindableObject
     {
         public T AssociatedObject { get; private set; }
+        
 
         internal BehaviorBase()
         {
         }
+        
+        
 
         protected override void OnAttachedTo(T bindable)
         {
@@ -22,6 +25,8 @@ namespace Xamarin.Forms.GoogleMaps.Bindings
 
             bindable.BindingContextChanged += OnBindingContextChanged;
         }
+        
+        
 
         protected override void OnDetachingFrom(T bindable)
         {
@@ -29,11 +34,15 @@ namespace Xamarin.Forms.GoogleMaps.Bindings
             bindable.BindingContextChanged -= OnBindingContextChanged;
             AssociatedObject = null;
         }
+        
+        
 
         private void OnBindingContextChanged(object sender, EventArgs e)
         {
             OnBindingContextChanged();
         }
+        
+        
 
         protected override void OnBindingContextChanged()
         {
